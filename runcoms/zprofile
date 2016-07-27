@@ -72,3 +72,8 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+# Initialization for FDK command line tools.Mon Jan 11 17:32:24 2016
+FDK_EXE="/Users/srbutler/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/srbutler/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
