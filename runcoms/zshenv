@@ -9,3 +9,13 @@
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+
+# modified PATH variable for pyenv and rbenv
+# export PATH="/Users/srbutler/.pyenv/shims:/Users/srbutler/.rbenv/shims:/Users/srbutler/.cabal/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Library/TeX/texbin"
+export PATH="/Users/srbutler/.cabal/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Library/TeX/texbin"
+
+
+# for emacs ansi-term to play nicely
+if [[ -n ${EMACS} ]]; then
+    zstyle ':prezto:module:terminal' auto-title 'no'
+fi

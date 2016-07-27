@@ -11,3 +11,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# for rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# for pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+source ~/.pyenv/completions/pyenv.zsh
+
+# for autojump
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
