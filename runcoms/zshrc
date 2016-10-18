@@ -10,14 +10,74 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+##### Aliases #####
 
-# for rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+## homebrew and cask
+alias brewf='brew info'
+alias caskf='brew cask info'
 
-# for pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-source ~/.pyenv/completions/pyenv.zsh
+## ipython
+alias ipython='ipython3'
+alias ipy='ipython'
+alias ipy2='ipython2'
+alias ipy3='ipython3'
 
-# for autojump
+## jupyter
+alias jpn='jupyter notebook'
+
+## pip
+alias pipi='pip install --upgrade'
+alias pip3i='pip3 install --upgrade'
+alias pipl='pip list'
+alias pip3l='pip3 list'
+alias pipo='pip list --outdated'
+alias pip3o='pip3 list --outdated'
+
+## pyenv
+alias pyenvg='pyenv global'
+alias pyenvi='pyenv install'
+alias pyenvil='pyenv install --list'
+alias pyenvl='pyenv local'
+alias pyenvs='pyenv versions'
+alias pyenvv='pyenv version'
+alias pyenvr='pyenv rehash'
+
+## emacs
+alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
+alias emacsterm='/usr/local/bin/emacs'
+alias emacsdebug='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
+alias emacsq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
+
+## general
+alias cll='clear & ll'
+
+
+#### Language ENVs ####
+
+# rbenv
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# pyenv
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# source ~/.pyenv/completions/pyenv.zsh
+eval "$(pyenv virtualenv-init -)"
+
+
+#### Utilities ####
+
+# autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# homebrew command-not-found
+# https://github.com/Homebrew/homebrew-command-not-found
+if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
+
+# general zsh completions
+# https://github.com/zsh-users/zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# amazon web services (awscli) completions
+source /usr/local/share/zsh/site-functions/_aws
+
+# iterm2 v3 shell integration
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

@@ -4,67 +4,74 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+## Note: anything with a ## comment is an SRB addition
 
-#
-# Browser
-#
+
+##### Browser #####
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
 
-#
-# Editors
-#
+##### Editors/Pagers #####
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='subl'
+export VISUAL='subl'
 export PAGER='less'
 
-#
-# Language
-#
+# LESS syntax highlight
+# Setup: "brew install highlight"
+# Pipe Highlight to less
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
+export LESS=" -R"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias more='less'
+
+# Use "highlight" in place of "cat"
+alias cat="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
+
+
+##### Language #####
 
 if [[ -z "$LANG" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
-#
-# Paths
-#
+export LC_ALL='en_US.UTF-8'
+export TERM='xterm-256color'
+
+##### PATH variable #####
+
+## for custom user programs
+PATH=/Users/srbutler/bin:"$PATH"
+
+## haskell cabal directory
+PATH=/Users/srbutler/.cabal/bin:"$PATH"
+
+## rust cargo directory
+PATH=/Users/srbutler/.cargo/bin:"$PATH"
+
+## node.js npm directory
+# PATH=/usr/local/share/npm/bin:"$PATH"
+
+## pyenv shims
+PATH=/Users/srbutler/.pyenv/shims:"$PATH"
+source ~/.pyenv/completions/pyenv.zsh
+## disable the prompt stating the env, will be disabled soon
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# for sublimetext3 linter
+export PATH=/opt/bin:$PATH
+
+# android SDK
+export ANDROID_HOME=~/Library/Android/sdk/sources/android-23
+PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
 
-# Set the list of directories that Zsh searches for programs.
-path=(
-  /usr/local/{bin,sbin}
-  $path
-)
-
-#
-# Less
-#
-
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-# Set the Less input preprocessor.
-# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
-fi
-
-#
-# Temporary Files
-#
+##### Temporary Files #####
 
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$LOGNAME"
@@ -72,8 +79,9 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
-# Initialization for FDK command line tools.Mon Jan 11 17:32:24 2016
-FDK_EXE="/Users/srbutler/bin/FDK/Tools/osx"
-PATH=${PATH}:"/Users/srbutler/bin/FDK/Tools/osx"
-export PATH
-export FDK_EXE
+
+
+#### Miscellaneous ####
+
+## add git-prompts to zsh
+source ~/.git-prompt.sh
