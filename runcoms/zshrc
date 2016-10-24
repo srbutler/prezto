@@ -16,6 +16,10 @@ fi
 alias brewf='brew info'
 alias caskf='brew cask info'
 
+## git
+alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
+alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
+
 ## ipython
 alias ipython='ipython3'
 alias ipy='ipython'
@@ -47,6 +51,9 @@ alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
 alias emacsterm='/usr/local/bin/emacs'
 alias emacsdebug='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
 alias emacsq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
+alias emacstermq='/usr/local/bin/emacs -q'
+# symlink emacs cask here to avoid clash with brew cask
+alias ecask='/usr/local/bin/cask'
 
 ## general
 alias cll='clear & ll'
