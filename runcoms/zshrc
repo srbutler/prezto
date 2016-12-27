@@ -19,6 +19,7 @@ alias caskf='brew cask info'
 ## git
 alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
 alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
+alias gds='git diff --staged'
 
 ## ipython
 alias ipython='ipython3'
