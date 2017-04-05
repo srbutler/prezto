@@ -15,8 +15,8 @@ fi
 
 ##### Editors/Pagers #####
 
-export EDITOR='subl'
-export VISUAL='subl'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 # LESS syntax highlight
@@ -29,6 +29,7 @@ alias more='less'
 
 # Use "highlight" in place of "cat"
 alias hcat="highlight $0 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
+
 
 
 ##### Language #####
@@ -49,6 +50,10 @@ export TERM='xterm-256color'
 
 ## for custom user programs
 PATH=/Users/srbutler/bin:"$PATH"
+
+## apache ant and ivy
+PATH=/Users/srbutler/bin/ant/bin:"$PATH"
+export ANT_HOME=/Users/srbutler/bin/ant
 
 ## haskell cabal directory
 PATH=/Users/srbutler/.cabal/bin:"$PATH"
@@ -96,3 +101,6 @@ export FDK_EXE
 ## add git-prompts to zsh
 source ~/.git-prompt.sh
 
+
+## use pygments as gtags backend
+export GTAGSLABEL=pygments
