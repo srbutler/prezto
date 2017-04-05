@@ -15,6 +15,8 @@ fi
 ## homebrew and cask
 alias brewf='brew info'
 alias caskf='brew cask info'
+# calls https://github.com/buo/homebrew-cask-upgrade
+alias casku='brew cu'
 
 ## git
 alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
@@ -66,7 +68,7 @@ alias cll='clear & ll'
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # source ~/.pyenv/completions/pyenv.zsh
 eval "$(pyenv virtualenv-init -)"
 
