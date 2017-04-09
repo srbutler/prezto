@@ -46,8 +46,7 @@ export TERM='xterm-256color'
 ## for custom user programs
 PATH=/Users/srbutler/bin:"$PATH"
 
-
-## apache ant and ivy
+## apache ant and ivy (only at work)
 # PATH=/Users/srbutler/bin/ant/bin:"$PATH"
 # export ANT_HOME=/Users/srbutler/bin/ant
 
