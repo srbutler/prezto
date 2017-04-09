@@ -51,15 +51,23 @@ export TERM='xterm-256color'
 ## for custom user programs
 PATH=/Users/srbutler/bin:"$PATH"
 
-## apache ant and ivy
-PATH=/Users/srbutler/bin/ant/bin:"$PATH"
-export ANT_HOME=/Users/srbutler/bin/ant
 
-## haskell cabal directory
+## apache ant and ivy
+# PATH=/Users/srbutler/bin/ant/bin:"$PATH"
+# export ANT_HOME=/Users/srbutler/bin/ant
+
+## haskell cabal and bin directories
 PATH=/Users/srbutler/.cabal/bin:"$PATH"
+PATH=/Users/srbutler/.local/bin:"$PATH"
 
 ## rust cargo directory
 PATH=/Users/srbutler/.cargo/bin:"$PATH"
+export RUST_SRC_PATH=/Users/srbutler/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+
+## golang path and root
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/.go
+PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 
 ## node.js npm directory
 # PATH=/usr/local/share/npm/bin:"$PATH"
@@ -71,7 +79,7 @@ source ~/.pyenv/completions/pyenv.zsh
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # for sublimetext3 linter
-export PATH=/opt/bin:$PATH
+# export PATH=/opt/bin:$PATH
 
 # android SDK
 export ANDROID_HOME=~/Library/Android/sdk/sources/android-23
