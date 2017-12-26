@@ -218,6 +218,7 @@ zstyle ':prezto:module:prompt' theme 'pure'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
+
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
@@ -231,3 +232,6 @@ zstyle ':prezto:module:prompt' theme 'pure'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
