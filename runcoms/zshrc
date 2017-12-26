@@ -58,9 +58,16 @@ alias emacstermq='/usr/local/bin/emacs -q'
 # symlink emacs cask here to avoid clash with brew cask
 alias ecask='/usr/local/bin/cask'
 
-## general
+## other/misc. 
 alias cll='clear & ll'
 
+## faq-cli tool
+alias faq='python2 ~/kasisto-git/Kai/Apps/kai-en-us/scripts/faq_cli.py'
+alias qid='faq query --fmt plain --in_app dbs-id --query'
+alias qin='faq query --fmt plain --in_app dbs-in --query'
+alias qsg='faq query --fmt plain --in_app dbs-sg --query'
+alias qibg='faq query --fmt plain --in_app dbsibg --query'
+alias qkai='faq query --fmt plain --in_app kai --query'
 
 #### Language ENVs ####
 
@@ -94,3 +101,4 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 # needed for OCaml's OPAM
 . /Users/srbutler/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
