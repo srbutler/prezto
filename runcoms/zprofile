@@ -42,6 +42,13 @@ export TERM='xterm-256color'
 
 ##### PATH variable #####
 
+# Set the list of directories that cd searches.
+# cdpath=(
+#   $cdpath
+# )
+fpath+=("modules/prompt/external/pure/async.zsh")
+
+
 ## for custom user programs
 PATH=/Users/srbutler/bin:"$PATH"
 
@@ -81,16 +88,24 @@ typeset -gU cdpath fpath mailpath path
 ##### Temporary Files #####
 
 if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="$(mktemp -d)"
+  export TMPDIR="/tmp/$LOGNAME"
+  mkdir -p -m 700 "$TMPDIR"
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+# Initialization for FDK command line tools.Mon Jan 11 17:32:24 2016
+FDK_EXE="/Users/srbutler/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/srbutler/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
 
 
 #### Miscellaneous ####
 
 ## add git-prompts to zsh
 source ~/.git-prompt.sh
+
 
 ## use pygments as gtags backend
 export GTAGSLABEL=pygments
