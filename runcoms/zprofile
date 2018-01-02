@@ -81,6 +81,9 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export ANDROID_HOME=~/Library/Android/sdk/sources/android-23
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+# ensure /usr/local/sbin is present
+PATH=/usr/local/sbin:"$PATH"
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -128,4 +131,6 @@ d4dconfig="$HOME/docker4developers/bin/config.sh"
 if [[ -a "$d4dconfig" ]]; then
     source "$d4dconfig"
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
