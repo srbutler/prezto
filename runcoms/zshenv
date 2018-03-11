@@ -14,3 +14,12 @@ fi
 if [[ -n ${EMACS} ]]; then
     zstyle ':prezto:module:terminal' auto-title 'no'
 fi
+
+## rust src directory
+export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+
+## pyenv: disable the prompt stating the env, will be disabled soon
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+## use pygments as gtags backend
+export GTAGSLABEL=pygments

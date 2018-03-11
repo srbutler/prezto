@@ -48,17 +48,12 @@ export TERM='xterm-256color'
 # )
 fpath+=("modules/prompt/external/pure/async.zsh")
 
-
-## for custom user programs
-PATH=/Users/srbutler/bin:"$PATH"
-
 ## haskell cabal and bin directories
-PATH=/Users/srbutler/.cabal/bin:"$PATH"
-PATH=/Users/srbutler/.local/bin:"$PATH"
+PATH=$HOME/.cabal/bin:"$PATH"
+PATH=$HOME/.local/bin:"$PATH"
 
 ## rust cargo directory
-PATH=/Users/srbutler/.cargo/bin:"$PATH"
-export RUST_SRC_PATH=/Users/srbutler/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+PATH="$HOME/.cargo/bin:$PATH"
 
 ## golang path and root
 export GOROOT=/usr/local/opt/go/libexec
@@ -69,24 +64,14 @@ PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
 PATH=/usr/local/share/npm/bin:"$PATH"
 
 ## pyenv shims
-PATH=/Users/srbutler/.pyenv/shims:"$PATH"
-source ~/.pyenv/completions/pyenv.zsh
-## disable the prompt stating the env, will be disabled soon
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-# for sublimetext3 linter
-# export PATH=/opt/bin:$PATH
-
-# android SDK
-export ANDROID_HOME=~/Library/Android/sdk/sources/android-23
-PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH=$HOME/.pyenv/shims:"$PATH"
+source $HOME/.pyenv/completions/pyenv.zsh
 
 # ensure /usr/local/sbin is present
 PATH=/usr/local/sbin:"$PATH"
 
-# Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
-
+## for custom user programs
+PATH=$HOME/bin:"$PATH"
 
 ##### Temporary Files #####
 
@@ -97,21 +82,7 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-# Initialization for FDK command line tools.Mon Jan 11 17:32:24 2016
-FDK_EXE="/Users/srbutler/bin/FDK/Tools/osx"
-PATH=${PATH}:"/Users/srbutler/bin/FDK/Tools/osx"
-export PATH
-export FDK_EXE
-
-
 #### Miscellaneous ####
-
-## add git-prompts to zsh
-source ~/.git-prompt.sh
-
-
-## use pygments as gtags backend
-export GTAGSLABEL=pygments
 
 ## adds pip completions to zsh
 # pip zsh completion start
@@ -124,13 +95,6 @@ function _pip_completion {
              PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
-# pip zsh completion end
 
-# add docker for developers
-d4dconfig="$HOME/docker4developers/bin/config.sh"
-if [[ -a "$d4dconfig" ]]; then
-    source "$d4dconfig"
-fi
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
+## Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path

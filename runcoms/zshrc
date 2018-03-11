@@ -54,14 +54,15 @@ alias pyenvr='pyenv rehash'
 
 ## emacs
 alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
-alias emacsterm='/usr/local/bin/emacs'
-alias emacsdebug='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
-alias emacsq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
-alias emacstermq='/usr/local/bin/emacs -q'
+alias e='open -a /usr/local/opt/emacs-mac/Emacs.app'
+alias et='/usr/local/bin/emacs'
+alias ed='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
+alias eq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
+alias etq='/usr/local/bin/emacs -q'
 # symlink emacs cask here to avoid clash with brew cask
 alias ecask='/usr/local/bin/cask'
 
-## other/misc. 
+## other/misc.
 alias cll='clear & ll'
 
 ## faq-cli tool
@@ -72,18 +73,12 @@ alias qsg='faq query --fmt plain --in_app dbs-sg --query'
 alias qibg='faq query --fmt plain --in_app dbsibg --query'
 alias qkai='faq query --fmt plain --in_app kai --query'
 
-#### Language ENVs ####
-
-# rbenv
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#### Utilities ####
 
 # pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # source ~/.pyenv/completions/pyenv.zsh
 eval "$(pyenv virtualenv-init -)"
-
-
-#### Utilities ####
 
 # autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -97,17 +92,17 @@ if brew command command-not-found-init > /dev/null; then eval "$(brew command-no
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # amazon web services (awscli) completions
-#source /usr/local/share/zsh/site-functions/_aws
+source /usr/local/share/zsh/site-functions/_aws
 
 # iterm2 v3 shell integration
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 # needed for OCaml's OPAM
-. /Users/srbutler/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # see https://github.com/ocaml/merlin/wiki/Letting-merlin-locate-go-to-stuff-in-.opam
 export OPAMKEEPBUILDDIR=true
 export OCAMLPARAM="_,bin-annot=1"
 
-
-# zprof
+## Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
