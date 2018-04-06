@@ -25,6 +25,9 @@ alias casku='brew cu'
 alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
 alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
 alias gds='git diff --staged'
+alias gp='git pull'
+alias gpo='git pull origin'
+alias grh='git reset HEAD'
 
 ## ipython
 alias ipython='ipython3'
@@ -54,7 +57,7 @@ alias pyenvr='pyenv rehash'
 
 ## emacs
 alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
-alias e='open -a /usr/local/opt/emacs-mac/Emacs.app'
+alias e='emacs'
 alias et='/usr/local/bin/emacs'
 alias ed='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
 alias eq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
