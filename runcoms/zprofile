@@ -7,7 +7,7 @@
 ## Note: anything with a ## comment is an SRB addition
 
 
-##### Browser #####
+#####Browser #####
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
@@ -50,3 +50,6 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 ## Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
+
+# ensure completion happens correctly
+export skip_global_compinit=1

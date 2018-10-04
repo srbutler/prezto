@@ -18,5 +18,7 @@ fi
 ## use pygments as gtags backend
 #export GTAGSLABEL=pygments
 
-
-
+PURE_PROMPT_SYMBOL=">"
+PURE_PROMPT_VICMD_SYMBOL="<"
+PURE_GIT_DOWN_ARROW="v"
+PURE_GIT_UP_ARROW="^"

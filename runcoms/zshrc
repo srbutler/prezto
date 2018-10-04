@@ -37,11 +37,10 @@ alias cll='clear & ll'
 #### Utilities ####
 
 # update fpath for pure prompt
-fpath=( "$HOME/.zfunctions" $fpath )
-autoload -U promptinit; promptinit
+#fpath=( "$HOME/.zfunctions" $fpath )
+#autoload -U promptinit; promptinit
 
-PURE_PROMPT_SYMBOL=">"
-prompt pure
+# prompt pure
 
 # general zsh completions
 # https://github.com/zsh-users/zsh-completions
