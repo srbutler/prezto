@@ -22,3 +22,16 @@ PURE_PROMPT_SYMBOL=">"
 PURE_PROMPT_VICMD_SYMBOL="<"
 PURE_GIT_DOWN_ARROW="v"
 PURE_GIT_UP_ARROW="^"
+
+## for custom user programs
+export PATH=$HOME/bin:"$PATH"
+export PATH=$HOME/.local/bin:"$PATH"
+
+## "fake" NPM global installation
+NPM_PACKAGES="${HOME}/mbig/.npm-packages"
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+fpath+=("modules/prompt/external/pure/async.zsh")
+
+## Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path

@@ -34,10 +34,6 @@ export TERM='xterm-256color'
 # cdpath=(
 #   $cdpath
 # )
-fpath+=("modules/prompt/external/pure/async.zsh")
-
-## for custom user programs
-PATH=$HOME/bin:"$PATH"
 
 ##### Temporary Files #####
 
@@ -48,8 +44,6 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-## Ensure path arrays do not contain duplicates.
-typeset -gU cdpath fpath mailpath path
 
 # ensure completion happens correctly
 export skip_global_compinit=1
