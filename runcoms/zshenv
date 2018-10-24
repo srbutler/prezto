@@ -23,6 +23,10 @@ PURE_PROMPT_VICMD_SYMBOL="<"
 PURE_GIT_DOWN_ARROW="v"
 PURE_GIT_UP_ARROW="^"
 
+## HTTP proxy info
+export HTTP_PROXY='http://devproxy.bloomberg.com:82'
+export HTTPS_PROXY='http://devproxy.bloomberg.com:82'
+
 ## for custom user programs
 export PATH=$HOME/bin:"$PATH"
 export PATH=$HOME/.local/bin:"$PATH"
