@@ -31,6 +31,9 @@ export HTTPS_PROXY='http://devproxy.bloomberg.com:82'
 export PATH=$HOME/bin:"$PATH"
 export PATH=$HOME/.local/bin:"$PATH"
 
+## for Stella support
+export STELLA_URL=https://stella.dev.bloomberg.com
+
 ## "fake" NPM global installation
 NPM_PACKAGES="${HOME}/mbig/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
