@@ -65,7 +65,7 @@ PATH=/usr/local/share/npm/bin:"$PATH"
 
 ## pyenv shims
 PATH=$HOME/.pyenv/shims:"$PATH"
-source $HOME/.pyenv/completions/pyenv.zsh
+# source $HOME/.pyenv/completions/pyenv.zsh
 
 # ensure /usr/local/sbin is present
 PATH=/usr/local/sbin:"$PATH"
@@ -82,7 +82,12 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-#### Miscellaneous ####
+### Bloomberg ###
+
+export STELLA_URL=https://stella.dev.bloomberg.com/app
+
+
+#### Miscellaneous ###
 
 ## adds pip completions to zsh
 # pip zsh completion start

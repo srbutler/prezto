@@ -107,5 +107,11 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 export OPAMKEEPBUILDDIR=true
 export OCAMLPARAM="_,bin-annot=1"
 
+# proxies for internal and external installation
+alias dev_proxy='http_proxy=http://bproxy.tdmz1.bloomberg.com:80 https_proxy=http://bproxy.tdmz1.bloomberg.com:80'
+alias ext_proxy='http_proxy=http://proxy.bloomberg.com:77 https_proxy=http://proxy.bloomberg.com:77'
+
+export no_proxy='blp-dpkg.dev.bloomberg.com'
+
 ## Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
