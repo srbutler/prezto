@@ -15,20 +15,16 @@ fi
 
 ##### Editors/Pagers #####
 
-export EDITOR='/usr/local/bin/emacs -q'
-export VISUAL='/usr/local/bin/emacs -q'
+export EDITOR='emacs'
+export VISUAL='emacs'
 export PAGER='less'
 
 # LESS syntax highlight
 # Setup: "brew install highlight"
 # Pipe Highlight to less
-export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
 export LESS=" -R"
 alias less='less -m -N -g -i -J --line-numbers --underline-special'
 alias more='less'
-
-# Use "highlight" in place of "cat"
-alias hcat="highlight $0 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
 
 
 ##### Language #####
@@ -48,30 +44,29 @@ export TERM='xterm-256color'
 # )
 fpath+=("modules/prompt/external/pure/async.zsh")
 
-## haskell cabal and bin directories
-PATH=$HOME/.cabal/bin:"$PATH"
-PATH=$HOME/.local/bin:"$PATH"
-
-## rust cargo directory
-PATH="$HOME/.cargo/bin:$PATH"
-
 ## golang path and root
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME/.go
-PATH="$PATH":"$GOROOT"/bin:"$GOPATH"/bin
+
+path=(
+    $HOME/bin             # my local overrides
+
+    $HOME/.cabal/bin      # rust
+    $HOME/.cargo/bin      # haskell
+    $GOROOT/bin           # go
+    $GOPATH/bin           # go
+
+
+    $path
+)
+
 
 ## node.js npm directory
 PATH=/usr/local/share/npm/bin:"$PATH"
 
-## pyenv shims
-PATH=$HOME/.pyenv/shims:"$PATH"
-source $HOME/.pyenv/completions/pyenv.zsh
-
 # ensure /usr/local/sbin is present
 PATH=/usr/local/sbin:"$PATH"
 
-## for custom user programs
-PATH=$HOME/bin:"$PATH"
 
 ##### Temporary Files #####
 

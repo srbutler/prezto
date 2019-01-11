@@ -16,14 +16,14 @@ if [[ -n ${EMACS} ]]; then
 fi
 
 # nvm setup
-export NVM_DIR="$HOME/.nvm"
- [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source /usr/share/nvm/init-nvm.sh
 
 ## rust src directory
 export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 
-## pyenv: disable the prompt stating the env, will be disabled soon
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
 ## use pygments as gtags backend
 export GTAGSLABEL=pygments
+
+# see https://github.com/ocaml/merlin/wiki/Letting-merlin-locate-go-to-stuff-in-.opam
+export OPAMKEEPBUILDDIR=true
+export OCAMLPARAM="_,bin-annot=1"

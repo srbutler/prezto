@@ -35,8 +35,11 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'homebrew' \
-  'osx' \
+  'pacman' \
+  'python' \
+  'node' \
+  'ocaml' \
+  'fasd' \
   'git' \
   'archive' \
   'tmux' \
@@ -109,7 +112,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Set the keyword used by `mand` to open man pages in Dash.app
-zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
+# zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
 
 #
 # Pacman
@@ -183,7 +186,7 @@ zstyle ':prezto:module:prompt' theme 'pure'
 #   'pattern' \
 #   'cursor' \
 #   'root'
-#
+
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
 #   'builtin' 'bg=blue' \
