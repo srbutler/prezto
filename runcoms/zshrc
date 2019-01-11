@@ -5,9 +5,111 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# zmodload zsh/zprof
+
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+##### Aliases #####
+
+## homebrew and cask
+alias brewf='brew info'
+alias caskf='brew cask info'
+# calls https://github.com/buo/homebrew-cask-upgrade
+alias casku='brew cu'
+
+## git
+alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
+alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
+alias gds='git diff --staged'
+alias gp='git pull'
+alias gpo='git pull origin'
+alias grh='git reset HEAD'
+
+## ipython
+alias ipython='ipython3'
+alias ipy='ipython'
+alias ipy2='ipython2'
+alias ipy3='ipython3'
+
+## jupyter
+alias jpn='jupyter notebook'
+
+## pip
+alias pipi='pip install --upgrade'
+alias pip3i='pip3 install --upgrade'
+alias pipl='pip list'
+alias pip3l='pip3 list'
+alias pipo='pip list --outdated'
+alias pip3o='pip3 list --outdated'
+
+## pyenv
+alias pyenvg='pyenv global'
+alias pyenvi='pyenv install'
+alias pyenvil='pyenv install --list'
+alias pyenvl='pyenv local'
+alias pyenvs='pyenv versions'
+alias pyenvv='pyenv version'
+alias pyenvr='pyenv rehash'
+
+## emacs
+alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
+alias e='emacs'
+alias et='/usr/local/bin/emacs'
+alias ed='open -a /usr/local/opt/emacs-mac/Emacs.app --args --debug-init'
+alias eq='open -a /usr/local/opt/emacs-mac/Emacs.app --args -q'
+alias etq='/usr/local/bin/emacs -q'
+# symlink emacs cask here to avoid clash with brew cask
+alias ecask='/usr/local/bin/cask'
+
+## other/misc.
+alias cll='clear & ll'
+
+## faq-cli tool
+alias faq='python2 ~/kasisto-git/Kai/Apps/kai-en-us/scripts/faq_cli.py'
+alias qid='faq query --fmt plain --in_app dbs-id --query'
+alias qin='faq query --fmt plain --in_app dbs-in --query'
+alias qsg='faq query --fmt plain --in_app dbs-sg --query'
+alias qibg='faq query --fmt plain --in_app dbsibg --query'
+alias qkai='faq query --fmt plain --in_app kai --query'
+
+#### Utilities ####
+
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# source ~/.pyenv/completions/pyenv.zsh
+eval "$(pyenv virtualenv-init -)"
+
+# autojump
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# homebrew command-not-found
+# https://github.com/Homebrew/homebrew-command-not-found
+if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
+
+# general zsh completions
+# https://github.com/zsh-users/zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# amazon web services (awscli) completions
+source /usr/local/share/zsh/site-functions/_aws
+
+# iterm2 v3 shell integration
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# needed for OCaml's OPAM
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# see https://github.com/ocaml/merlin/wiki/Letting-merlin-locate-go-to-stuff-in-.opam
+export OPAMKEEPBUILDDIR=true
+export OCAMLPARAM="_,bin-annot=1"
+
+# nvm/node setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+## Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
