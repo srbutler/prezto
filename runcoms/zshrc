@@ -10,14 +10,13 @@
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 ##### Aliases #####
 
 ## git
-alias gws='git status --ignore-submodules=${_git_status_ignore_submodules}'
-alias gwS='git status --ignore-submodules=${_git_status_ignore_submodules} --short'
+alias gws='git status'
 alias gds='git diff --staged'
 alias gp='git pull'
 alias gpo='git pull origin'
@@ -59,8 +58,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     ## homebrew and cask
     alias brewf='brew info'
     alias caskf='brew cask info'
-    # calls https://github.com/buo/homebrew-cask-upgrade
-    alias casku='brew cu'
+
     ## emacs
     alias emacs='open -a /usr/local/opt/emacs-mac/Emacs.app'
     alias e='emacs'
@@ -76,10 +74,19 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
     # homebrew command-not-found
     # https://github.com/Homebrew/homebrew-command-not-found
-    if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
+    if brew command command-not-found-init > /dev/null; then
+        eval "$(brew command-not-found-init)";
+    fi
 
     # iterm2 v3 shell integration
-    test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+    test -e ${HOME}/.iterm2_shell_integration.zsh &&
+        source ${HOME}/.iterm2_shell_integration.zsh;
+
+elif [[ "$OSTYPE" == linux-gnu* ]]; then
+    ## emacs
+    alias e='emacsclient -nc'
+    alias et='emacsclient -nw'
+    alias etq='emacs -nw -q'
 fi
 
 # pyenv

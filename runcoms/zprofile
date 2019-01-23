@@ -56,7 +56,6 @@ path=(
     $GOROOT/bin           # go
     $GOPATH/bin           # go
 
-
     $path
 )
 
