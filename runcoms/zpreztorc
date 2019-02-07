@@ -37,13 +37,11 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'pacman' \
   'python' \
-  'node' \
   'ocaml' \
   'fasd' \
   'git' \
   'archive' \
   'tmux' \
-  'node' \
   'archive' \
   'utility' \
   'syntax-highlighting' \

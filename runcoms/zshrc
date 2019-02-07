@@ -7,7 +7,6 @@
 
 # zmodload zsh/zprof
 
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -23,20 +22,17 @@ alias gpo='git pull origin'
 alias grh='git reset HEAD'
 
 ## ipython
-alias ipython='ipython3'
 alias ipy='ipython'
 alias ipy2='ipython2'
 alias ipy3='ipython3'
-
-## jupyter
 alias jpn='jupyter notebook'
 
 ## pip
-alias pipi='pip install --upgrade'
+alias pip2i='pip install --upgrade'
 alias pip3i='pip3 install --upgrade'
-alias pipl='pip list'
+alias pip2l='pip list'
 alias pip3l='pip3 list'
-alias pipo='pip list --outdated'
+alias pip2o='pip list --outdated'
 alias pip3o='pip3 list --outdated'
 
 ## pyenv
@@ -45,14 +41,21 @@ alias pyenvi='pyenv install'
 alias pyenvil='pyenv install --list'
 alias pyenvl='pyenv local'
 alias pyenvs='pyenv versions'
-alias pyenvv='pyenv version'
 alias pyenvr='pyenv rehash'
-
-## other/misc.
-alias cll='clear & ll'
 
 
 #### Utilities ####
+
+path=(
+    $HOME/.local/bin      # my local overrides
+
+    $HOME/.cargo/bin      # rust
+    $GOPATH/bin           # go
+
+    $path
+)
+
+# export PATH
 
 if [[ "$OSTYPE" == darwin* ]]; then
     ## homebrew and cask
@@ -84,25 +87,44 @@ if [[ "$OSTYPE" == darwin* ]]; then
 
 elif [[ "$OSTYPE" == linux-gnu* ]]; then
     ## emacs
-    alias e='emacsclient -nc'
+    alias edae='emacs --daemon'
+    alias ec='emacsclient -c'
+    alias en='emacsclient -n'
+    alias enc='emacsclient -nc'
     alias et='emacsclient -nw'
     alias etq='emacs -nw -q'
 fi
 
 # pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-# source ~/.pyenv/completions/pyenv.zsh
 eval "$(pyenv virtualenv-init -)"
 
-# general zsh completions
-# https://github.com/zsh-users/zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
+# vendor zsh completions
+if [ -s /usr/share/zsh/vendor-completions ]; then
+    fpath=(/usr/share/zsh/vendor-completions $fpath)
+fi
 
 # load OCaml's OPAM
 $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# nvm/node setup
-source /usr/share/nvm/init-nvm.sh
+# nvm/npm/node
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .bashrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+if [ -s "/usr/share/nvm/init-nvm.sh" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    declare -a __node_commands=('nvm' 'node' 'npm' 'npx' 'yarn' 'gulp' 'grunt' 'webpack')
+    function __init_nvm() {
+        for i in "${__node_commands[@]}"; do unalias $i; done
+        . /usr/share/nvm/init-nvm.sh
+        unset __node_commands
+        unset -f __init_nvm
+    }
+    for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
+
 
 ## Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
+
+# zprof

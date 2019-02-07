@@ -10,14 +10,6 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# for emacs ansi-term to play nicely
-if [[ -n ${EMACS} ]]; then
-    zstyle ':prezto:module:terminal' auto-title 'no'
-fi
-
-# nvm setup
-source /usr/share/nvm/init-nvm.sh
-
 ## rust src directory
 export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 
