@@ -28,6 +28,7 @@ alias gds='git diff --staged'
 alias gp='git pull'
 alias gpo='git pull origin'
 alias grh='git reset HEAD'
+alias grv='git remote --verbose'
 
 ## ipython
 alias ipython='ipython3'
@@ -68,13 +69,8 @@ alias ecask='/usr/local/bin/cask'
 ## other/misc.
 alias cll='clear & ll'
 
-## faq-cli tool
-alias faq='python2 ~/kasisto-git/Kai/Apps/kai-en-us/scripts/faq_cli.py'
-alias qid='faq query --fmt plain --in_app dbs-id --query'
-alias qin='faq query --fmt plain --in_app dbs-in --query'
-alias qsg='faq query --fmt plain --in_app dbs-sg --query'
-alias qibg='faq query --fmt plain --in_app dbsibg --query'
-alias qkai='faq query --fmt plain --in_app kai --query'
+## BB
+alias bcc='dev public-100-70-36-29.dob1'
 
 #### Utilities ####
 
@@ -115,3 +111,7 @@ export no_proxy='blp-dpkg.dev.bloomberg.com'
 
 ## Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
